@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.socialapp.dao.UserDao;
+import com.example.socialapp.model.User;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -95,6 +97,9 @@ public class SignInActivity extends AppCompatActivity {
 
     private void updateUi(FirebaseUser firebaseUser) {
         if(firebaseUser!=null){
+            User user=new User(firebaseUser.getUid(),firebaseUser.getDisplayName(),firebaseUser.getPhotoUrl().toString());
+            UserDao userDao=new UserDao();
+            userDao.addUser(user);
             startActivity(new Intent(SignInActivity.this,HomeScreen.class));
             finish();
 
