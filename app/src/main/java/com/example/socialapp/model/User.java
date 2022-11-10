@@ -1,5 +1,8 @@
 package com.example.socialapp.model;
 public class User {
+    private String uid;
+    private String displayName;
+    private String imageUrl;
     public String getUid() {
         return uid;
     }
@@ -24,9 +27,10 @@ public class User {
         this.imageUrl = imageUrl;
     }
 
-    private String uid;
-    private String displayName;
-    private String imageUrl;
+
+    public User(){
+
+    }
 
     public User(String uid, String displayName, String imageUrl) {
         this.uid = uid;
